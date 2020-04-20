@@ -16,41 +16,22 @@ Output: -1
 */
 
 var search = function(nums, target) {
-    if(nums === null || nums.length === 0) return -1;
-    let left = 0;
-    let right = nums.length - 1;
+  let left = 0;
+  let right = nums.length - 1;
 
-    while(left < right) {
-        let mid = left + Math.floor((right - left) / 2);
+  while (left <= right) {
+    const mid = left + Math.floor((left + right) / 2);
 
-        if(nums[mid] > nums[right]) {
-            left = mid + 1;
-        } else {
-            right = mid;
-        }
-    }
+    if (nums[mid] === target) return mid;
 
-    let start = left; // in sorted array left should be the smallest
-    left = 0;
-    right = nums.length - 1;
-
-    if(target > nums[start] && target < nums[right]) {
-        left = start;
+    // When dividing the rotated array into two halves, one must be sorted
+    // Check if the left side is sorted
+    if (nums[left] <= nums[mid]) {
+      if (nums[left] <= target && target <= nums[mid]) right = mid - 1; // target is in the left
+      else left = mid + 1; // target is in the right
     } else {
-        right = start;
+      if (nums[mid] <= target && target <= nums[right]) left = mid + 1; // target is in the right
+      else right = mid - 1; // target is in the left
     }
-
-    while(left <= right) {
-        mid = left + Math.floor((right - left) / 2);
-
-        if(nums[mid] === target) {
-            return mid;
-        } else if(nums[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-
-    return -1;
+  }
 };
