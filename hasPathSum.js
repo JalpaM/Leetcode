@@ -1,6 +1,17 @@
+// Input:
+//       5
+//      / \
+//     4  8
+//    /  / \
+//  11  13 4
+//  / \     \
+// 7  2     1
+// sum: 22
+// 5 -> 4 -> 11 -> 2
+
 function hasPathSum(root, sum) {
     // return false for root as null
-    if(root === null) {
+    if(root === null || root.length === 0) {
       return false;
     }
 
@@ -14,14 +25,3 @@ function hasPathSum(root, sum) {
       return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
     }
 }
-
-// Input:
-//       5
-//      / \
-//     4  8
-//    /  / \
-//  11  13 4
-//  / \     \
-// 7  2     1
-// sum: 22
-// 5 -> 4 -> 11 -> 2

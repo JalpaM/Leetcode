@@ -6,7 +6,7 @@ function isValidBST(root) {
 
 function validate(root, max, min) {
     // true if root is null
-    if(root === null) {
+    if(root === null || root.length === 0) {
         return true;
     }
     // false if root is less than left node or root is greater than right node
