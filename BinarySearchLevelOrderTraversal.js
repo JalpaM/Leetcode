@@ -32,6 +32,6 @@ function levelOrderTraversal(root) {
     go(node.right, level + 1);
   }
 
-  go(root, 0;)
+  go(root, 0);
   return result;
 }

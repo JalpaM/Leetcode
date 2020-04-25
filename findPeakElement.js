@@ -16,7 +16,8 @@ Output: 1 or 5
 Explanation: Your function can return either index number 1 where the peak element is 2,
              or index number 5 where the peak element is 6.
 */
-
+// [1,2,1,3,5,6,4] of subarray is sorted [1,2], [1,3,5,6], [4] so can use binary search
+// Time complexity: O(log n)
 var findPeakElement = function(nums) {
     var left = 0;
     var right = nums.length - 1;

@@ -9,6 +9,8 @@
 // sum: 22
 // 5 -> 4 -> 11 -> 2
 
+// Time complexity: O(n)
+
 function hasPathSum(root, sum) {
     // return false for root as null
     if(root === null || root.length === 0) {

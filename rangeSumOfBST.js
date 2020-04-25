@@ -13,7 +13,7 @@ Output: 23
 */
 
 var rangeSumBST = function(root, L, R) {
-    if(root === null) return 0;
+    if(root === null || root.length === 0) return 0;
     let sum = 0;
 
     const go = (node) => {

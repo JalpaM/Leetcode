@@ -10,7 +10,7 @@ function validate(root, max, min) {
         return true;
     }
     // false if root is less than left node or root is greater than right node
-    else if((min !== null && root.val <= min) || (max !== null && root.val >= max)) {
+    else if((min !== null && root.val <= min) || (max !== null && root.val > max)) {
         return false;
     }
     // recursive where left node should have value less than root and right node should have value greater than root

@@ -28,7 +28,6 @@ function validPalindrome(s) {
     i++;
     j--;
   }
-
   return true;
 }
 
@@ -38,6 +37,5 @@ function isPalindrome(s, i, j) {
       return false;
     }
   }
-
   return true;
 }

@@ -17,8 +17,8 @@ const swapPairs = (head) => {
     let second_node = current.next.next;
 
     first_node.next = second_node.next;
-    current.next = second_node;
-    current.next.next = first_node;
+    second_node = current.next;
+    first_node = current.next.next;
     current = current.next.next;
   }
 

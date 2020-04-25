@@ -23,7 +23,7 @@ var searchRange = function(nums, target) {
 };
 
 var findStartIndex = (nums, target) => {
-    let index = -1;
+    let index = -1;  // can't take index as 0 as other array element can have that index
     let left = 0;
     let right = nums.length - 1;
 
@@ -43,7 +43,7 @@ var findStartIndex = (nums, target) => {
 }
 
 var findLastIndex = (nums, target) => {
-    let index = -1;
+    let index = -1; // can't take index as 0 as other array element can have that index
     let left = 0;
     let right = nums.length - 1;
 

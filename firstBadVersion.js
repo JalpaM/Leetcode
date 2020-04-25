@@ -13,6 +13,8 @@ call isBadVersion(4) -> true
 
 Then 4 is the first bad version.
 */
+
+// Time complexity: O(log n)
 let solution = function(isBadVersion) {
     return function(n) {
         // if parameter is an array then left should be 0 as index starts from 0 otherwise 1
@@ -20,6 +22,7 @@ let solution = function(isBadVersion) {
         while(left < right) {
             let mid = left + Math.floor((right - left)/2);
 
+            // check for mid and if mid is not a bad version then all versions before mid should not be bad version
             if(!isBadVersion(mid)) {
                 left = mid + 1;
             } else {
