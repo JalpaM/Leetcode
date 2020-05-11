@@ -19,12 +19,14 @@ var coinChange = function(coins, amount) {
     let dp = new Array(amount + 1).fill(amount + 1);
     dp[0] = 0;
 
-    // i is the number of coins need to make an amount
+    // i is the number of coins needed to make an amount
     for(let i = 0; i <= amount; i++) {
         for(const coin of coins) {
             // check for if coin is bigger than needed i
-            if(coin <= i) {
-                dp[i] = Math.min(dp[i], 1 + dp[i - coin]); // [i - coin] as remaining amount to make whole amount
+            if(coin <= i)
+                // fewest number of coins to make i
+                // dp[i - coin] must be calcuated before
+                dp[i] = Math.min(dp[i], 1 + dp[i - coin]); // added 1 as that's the current and [i- coin] -> after taking coin what is the amount i become
             } else {
                 break;
             }

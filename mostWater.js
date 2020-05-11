@@ -13,18 +13,18 @@ Output: 49
 // Time complexity: O(n)
 function maxArea(height) {
   let max = 0;
-  let i = 0;
-  let j = height.length - 1;
+  let l = 0;
+  let r = height.length - 1;
 
-  while(i < j) {
-    let min = Math.min(height[i], height[j]);
+  while(l < r) {
+    let min = Math.min(height[l], height[r]);
     // calculating area -> min * (j - i)
-    max = Math.max(max, min * (j - i));
+    max = Math.max(max, min * (r - l));
 
-    if(height[i] < height[j]) {
-      i++;
+    if(height[l] < height[r]) {
+      l++;
     } else {
-      j--;
+      r--;
     }
   }
 
