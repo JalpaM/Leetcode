@@ -8,38 +8,14 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 */
-
-var twoSum1 = function(nums, target) {
+// Time Complexity: O(n)
+var twoSum = function(nums, target) {
     var len = nums.length;
-
     var hashT={};
-    for(var i = 0; i <len; i++)
-    {
-         if(hashT[target - nums[i]] === 0)
-         {
-            return [hashT[target - nums[i]], i];
-         }
-         hashT[nums[i]]=i;
+    for(var i = 0; i < len; i++) {
+      const diff = target - nums[i];
+      if(hashT[diff] != null) return [hashT[diff], i];
+      hashT[nums[i]]=i;
     }
     return [];
 };
-
-// OR
-
-function twoSum(arr, target) {
-    var left = 0;
-    var right = arr.length - 1;
-    var mid = left + Math.floor((right - left)/2);
-
-    while(left <= right) {
-        if(arr[mid] + arr[mid - 1] === target) {
-            return [arr[mid], arr[mid-1]];
-        } else if(arr[mid] + arr[mid - 1] > target) {
-            mid = mid - 1;
-        } else {
-            mid = mid + 1;
-        }
-    }
-
-    return [];
-}

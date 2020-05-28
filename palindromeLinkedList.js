@@ -45,4 +45,4 @@ var reverse = head => {
         head = next;          // head = 2 => 2 -> 1 -> null then loop again
     }
     return prev;              // 3 -> 2 -> 1 -> null
-} 
+}
