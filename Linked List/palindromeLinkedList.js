@@ -12,6 +12,8 @@ Follow up:
 Could you do it in O(n) time and O(1) space?
 */
 var isPalindrome = function(head) {
+    if(head === null || head.next === null) return true;
+
     let slow = head;
     let fast = head;
 
@@ -25,13 +27,24 @@ var isPalindrome = function(head) {
     slow = reverse(slow);
     fast = head; // set to initial point
 
+    let copySlow = slow;
+
     while(slow !== null) {
         if(slow.val !== fast.val) {
             return false;
         }
+
+        slow = slow.next;
+        fast = fast.next;
     }
 
-    return true;
+    reverse(copySlow);
+
+    if(head === null || slow === null) {
+      return true;
+    }
+
+    return false;
 };
 
 //  1 -> 2 -> 3

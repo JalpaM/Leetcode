@@ -11,7 +11,7 @@ return [0, 1].
 // Time Complexity: O(n)
 var twoSum = function(nums, target) {
     var len = nums.length;
-    var hashT={};
+    var hashT = {};
     for(var i = 0; i < len; i++) {
       const diff = target - nums[i];
       if(hashT[diff] != null) return [hashT[diff], i];

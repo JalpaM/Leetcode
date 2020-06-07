@@ -5,7 +5,7 @@
 //   [7, 8, 9]
 // ]
 // output: 2016
-
+// 1 -> 4 -> 7 -> 8 -> 9
 // Similar to minimum Path Sum problem
 // Need to find maximum so dynamic programming is a way to solve the problem
 

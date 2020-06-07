@@ -44,7 +44,7 @@ var canCompleteCircuit = function(gas, cost) {
         tank += gas[i] - cost[i];
         if(tank < 0) {
             tank = 0;
-            start = gas[i + 1]; // tank value is negative so can't complete loop from 1 to i gas station so now we have to start from (i + 1) gas station
+            start = i + 1; // tank value is negative so can't complete loop from 1 to i gas station so now we have to start from (i + 1) gas station
         }
     }
 

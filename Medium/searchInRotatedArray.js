@@ -34,4 +34,6 @@ var search = function(nums, target) {
       else right = mid - 1; // target is in the left
     }
   }
+
+  return -1;
 };

@@ -14,6 +14,7 @@ Output:  [1,2,4,7,5,3,6,8,9]
 // going up-right, row value is decremented by 1 and column value is incremented by 1
 // going bottom-left, row value is incremented by 1 and column value is decremented by 1
 var diagonalMatrix = matrix => {
+  if(matrix.length === 0) return [];
   let m = matrix.length; // rows
   let n = matrix[0].length; // columns
   let res = [];

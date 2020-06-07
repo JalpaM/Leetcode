@@ -16,22 +16,21 @@ Output: -1
 // Time Complexity: O(n^2)
 var coinChange = function(coins, amount) {
     // Always take array length + 1 and fill with 0 for dynamic programming question
-    let dp = new Array(amount + 1).fill(amount + 1);
+    const dp = new Array(amount + 1).fill(Infinity);
     dp[0] = 0;
 
     // i is the number of coins needed to make an amount
-    for(let i = 0; i <= amount; i++) {
-        for(const coin of coins) {
-            // check for if coin is bigger than needed i
-            if(coin <= i)
-                // fewest number of coins to make i
-                // dp[i - coin] must be calcuated before
-                dp[i] = Math.min(dp[i], 1 + dp[i - coin]); // added 1 as that's the current and [i- coin] -> after taking coin what is the amount i become
-            } else {
-                break;
-            }
+    for (let i = 1; i <= amount; i++) {
+        for (const coin of coins) {
+
+          // check for if coin is bigger than needed i
+          if (i - coin >= 0) {
+              // fewest number of coins to make i
+              // dp[i - coin] must be calcuated before
+            dp[i] = Math.min(dp[i], dp[i - coin] + 1); // added 1 as that's the current and [i- coin] -> after taking coin what is the amount i become
+          }
         }
     }
 
-    return dp[amount] > amount ? -1 : dp[amount];
+    return dp[amount] === Infinity ? -1 : dp[amount];
 };

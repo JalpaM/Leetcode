@@ -25,7 +25,7 @@ function numIslands(grid) {
 
   let numsIslands = 0;
 
-  for(let i =0; i < grid.length; i++) {
+  for(let i = 0; i < grid.length; i++) {
     for(let j = 0; j < grid[i].length; j++) {
       // consider only grid[i][j] which has value 1
       if(grid[i][j] === '1') {

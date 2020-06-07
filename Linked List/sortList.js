@@ -15,12 +15,12 @@ Output: -1->0->3->4->5
 var sortList = head => {
   // Here, we are just sorting a list so no need to create new ListNode
 
-  if(head === null) return head;
+  if(!head || !head.next) return head;
 
   // initially assign to the top of the list
-  temp = head;
-  slow = head;
-  fast = head;
+  let temp = head;
+  let slow = head;
+  let fast = head;
 
   // this loop breaks when fast reaches the end of the list
   // Here, we are separating list in halves

@@ -56,7 +56,7 @@ The given board size is always 9x9.
 //  6   7   8
 
 
-var isValidSudoku1 = (board) => {
+var isValidSudoku = (board) => {
   // const row = Array(9).fill({}); // wrong, all will point to same {} reference
   // const row = [{}, {}, {}, {}, {}, {}, {}, {}, {}]; // correct
   const row = Array.from(Array(9), () => ({}));

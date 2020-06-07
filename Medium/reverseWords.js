@@ -19,6 +19,7 @@ Explanation: You need to reduce multiple spaces between two words to a single sp
 // Time complexity: O(n)
 var reverseWords = function(s) {
     s = s.trim().split(' ');
+    s = s.filter(el => el.length > 0);
     let left = 0;
     let right = s.length - 1;
 
