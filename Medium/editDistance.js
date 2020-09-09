@@ -29,16 +29,16 @@ exection -> execution (insert 'u')
 var minDistance = (word1, word2) => {
   var dp = [...Array(word1.length + 1)].map(() => Array(word2.length + 1));
 
-  for(let i = 0; i <= word1.length; i++) {
-    for(let j = 0; j<= word2.length; j++) {
+  for (let i = 0; i <= word1.length; i++) {
+    for (let j = 0; j <= word2.length; j++) {
       // add all characters from 2nd word if 1st word is empty string
-      if(i === 0) {
+      if (i === 0) {
         dp[i][j] = j;
-      } else if(j === 0) {
+      } else if (j === 0) {
         // add all characters from 1st word if 2nd word is empty string
         dp[i][j] = i;
-      } else if(word1[i - 1] === word2[j - 1]) {
-        // take diagonal value if characters are same 
+      } else if (word1[i - 1] === word2[j - 1]) {
+        // take diagonal value if characters are same
         dp[i][j] = dp[i - 1][j - 1];
       } else {
         // perform insert, remove, modify operations if characters are different
@@ -48,4 +48,4 @@ var minDistance = (word1, word2) => {
   }
 
   return dp[word1.length][word2.length];
-}
+};

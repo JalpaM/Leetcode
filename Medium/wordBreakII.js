@@ -1,6 +1,7 @@
 // 140. Word Break II
 /*
-Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, 
+add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.
 
 Note:
 The same word in the dictionary may be reused multiple times in the segmentation.
@@ -34,24 +35,24 @@ Output:
 []
 */
 
-var wordBreak = function(s, wordDict) {
-    let res = [];
+var wordBreak = function (s, wordDict) {
+  let res = [];
 
-    let findCombination = (current, str) => {
-        if(str.length === 0) {
-            res.push(current.join(' '));
-            return;
-        }
-
-        for(let i = 0; i < wordDict.length; i++) {
-            if(str.indexOf(wordDict[i]) === 0) {
-                current.push(wordDict[i]);
-                findCombination(current, str.slice(wordDict[i].length));
-                current.pop();
-            }
-        }
+  let findCombination = (current, str) => {
+    if (str.length === 0) {
+      res.push(current.join(" "));
+      return;
     }
 
-    findCombination([], s);
-    return res;
+    for (let i = 0; i < wordDict.length; i++) {
+      if (str.indexOf(wordDict[i]) === 0) {
+        current.push(wordDict[i]);
+        findCombination(current, str.slice(wordDict[i].length));
+        current.pop();
+      }
+    }
+  };
+
+  findCombination([], s);
+  return res;
 };

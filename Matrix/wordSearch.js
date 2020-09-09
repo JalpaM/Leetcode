@@ -24,32 +24,40 @@ board and word consists only of lowercase and uppercase English letters.
 // similar to number of islands
 // Time complexity: O(n^2)
 var exist = (board, word) => {
-  for(let i = 0; i < board.length; i++) {
-    for(let j = 0; j < board[i].length; j++) {
-      if(board[i][j] === word.charAt(0) && dfs(board, i, j, 0, word)) {
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] === word.charAt(0) && dfs(board, i, j, 0, word)) {
         return true;
       }
     }
   }
 
   return false;
-}
+};
 
 var dfs = (board, i, j, count, word) => {
-  if(count === word.length) return true;
+  if (count === word.length) return true;
 
   // set to false for out of bound or next character doesn't match
-  if(i < 0 || i >= board.length || j < 0 || j >= board[i].length || board[i][j] !== word.charAt(count)) {
+  if (
+    i < 0 ||
+    i >= board.length ||
+    j < 0 ||
+    j >= board[i].length ||
+    board[i][j] !== word.charAt(count)
+  ) {
     return false;
   }
 
   let temp = board[i][j]; // need to remember current element as need to add back after recursion call
-  board[i][j] = ' '; // current element so set as visited
-  let found = dfs(board, i + 1, j, count + 1, word) // next row and same column element
-              || dfs(board, i - 1, j, count + 1, word) // previous row and same column element
-              || dfs(board, i, j + 1, count + 1, word) // next column and same row element
-              || dfs(board, i, j - 1, count + 1, word); // previous column and same row element
+  board[i][j] = " "; // current element so set as visited
+  let found =
+    dfs(board, i + 1, j, count + 1, word) || // next row and same column element
+    dfs(board, i - 1, j, count + 1, word) || // previous row and same column element
+    dfs(board, i, j + 1, count + 1, word) || // next column and same row element
+    dfs(board, i, j - 1, count + 1, word); // previous column and same row element
 
   board[i][j] = temp; // setting back the current value
+
   return found;
-}
+};

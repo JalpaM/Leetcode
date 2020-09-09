@@ -1,7 +1,8 @@
 // 134. Gas Station
 /*
 There are N gas stations along a circular route, where the amount of gas at station i is gas[i].
-You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.
+You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). 
+You begin the journey with an empty tank at one of the gas stations.
 Return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return -1.
 
 Note:
@@ -35,18 +36,21 @@ Travel to station 1. Your tank = 3 - 3 + 3 = 3
 You cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.
 Therefore, you can't travel around the circuit once no matter where you start.
 */
-var canCompleteCircuit = function(gas, cost) {
-    let tank = 0, start = 0, g = 0, c = 0;
+var canCompleteCircuit = function (gas, cost) {
+  let tank = 0,
+    start = 0,
+    g = 0,
+    c = 0;
 
-    for(let i = 0; i < gas.length; i++) {
-        g += gas[i];
-        c += cost[i];
-        tank += gas[i] - cost[i];
-        if(tank < 0) {
-            tank = 0;
-            start = i + 1; // tank value is negative so can't complete loop from 1 to i gas station so now we have to start from (i + 1) gas station
-        }
+  for (let i = 0; i < gas.length; i++) {
+    g += gas[i];
+    c += cost[i];
+    tank += gas[i] - cost[i];
+    if (tank < 0) {
+      tank = 0;
+      start = i + 1; // tank value is negative so can't complete loop from 1 to i gas station so now we have to start from (i + 1) gas station
     }
+  }
 
-    return (g < c) ? -1 : start;
+  return g < c ? -1 : start;
 };

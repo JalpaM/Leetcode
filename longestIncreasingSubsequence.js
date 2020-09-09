@@ -33,7 +33,7 @@ var lengthOfLIS = function(nums) {
             }
         }
 
-        tails[mid] = n;
+        tails[right] = n;
     }
 
     return tails.length;

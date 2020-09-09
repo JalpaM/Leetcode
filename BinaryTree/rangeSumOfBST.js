@@ -13,23 +13,17 @@ Output: 23
 */
 
 var rangeSumBST = function(root, L, R) {
-    if(root === null || !root) return 0;
-    let sum = 0;
+  let sum = 0;
 
-    const go = (node) => {
-      if(node === null) return sum;
-
-      while(node.length) {
-        if(node.val >= L && node.val <= R) {
-          sum += node.val;
-        }
-
-        go(node.left); // traversing left portion of node
-        go(node.right); // traversing right portion of node
-      }
+  function helper(root) {
+    if (!root) return;
+    
+    if (root.val <= R && root.val >= L) {
+      sum += root.val;
     }
-
-    go(root);
-
-    return sum;
+    helper(root.right);
+    helper(root.left);
+  }
+  helper(root);
+  return sum;
 };

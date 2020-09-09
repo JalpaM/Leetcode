@@ -18,7 +18,7 @@ Given target = 20, return false.
 */
 
 var searchMatrix = function(matrix, target) {
-    if(matrix.length === 0 || matrix === null) return;
+    if(matrix.length === 0 || matrix === null) return false;
 
     let row = matrix.length - 1;
     let col = 0;

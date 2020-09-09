@@ -10,20 +10,20 @@ Follow up:
 If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
 */
 
-var minSubArrayLen = function(s, nums) {
+var minSubArrayLen = function (s, nums) {
   let result = Number.MAX_VALUE;
   let left = 0;
-  let val_max = 0;
+  let localMax = 0;
 
-  for(let i = 0; i < nums.length; i++) {
-    val_max += nums[i];
+  for (let i = 0; i < nums.length; i++) {
+    localMax += nums[i];
 
-    while(val_max >= sum) {
+    while (localMax >= s) {
       result = Math.min(result, i + 1 - left);
-      val_max -= nums[left];
+      localMax -= nums[left];
       left++;
     }
   }
 
   return result !== Number.MAX_VALUE ? result : 0;
-}
+};

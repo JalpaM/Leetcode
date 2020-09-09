@@ -29,7 +29,7 @@ Output:
  * @return {TreeNode}
  */
 var invertTree = function(root) {
-    if(root === null) return null;
+    if(root === null || root.length === 0) return null;
 
     let left = invertTree(root.left);
     let right = invertTree(root.right);

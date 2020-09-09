@@ -44,52 +44,55 @@ The right boundary are node 1,3,6,10. (10 is the right-most node).
 So order them in anti-clockwise without duplicate nodes we have [1,2,4,7,8,9,10,6,3].
 */
 
-var boundaryOfBinaryTree = function(root) {
-    if(!root || root === null) return [];
-    if(!root.left && !root.right) return [root.val];
+var boundaryOfBinaryTree = function (root) {
+  if (!root || root === null) return [];
+  if (!root.left && !root.right) return [root.val];
 
-    let resLeft = [], resRight = [], res = [];
+  let resLeft = [],
+    resRight = [],
+    res = [];
 
-    // Traversing Left binary tree, eliminate root and leaf nodes
-    boundaryLeft = root => {
-        if(!root) return;
+  // Traversing Left binary tree, eliminate root and leaf nodes
+  boundaryLeft = (root) => {
+    if (!root) return;
 
-        if(root.left) {
-            resLeft.push(root.val);
-            boundaryLeft(root.left);
-        } else if(root.right) {
-            resLeft.push(root.val);
-            boundaryLeft(root.right);
-        }
+    if (root.left) {
+      resLeft.push(root.val);
+      boundaryLeft(root.left);
+    } else if (root.right) {
+      resLeft.push(root.val);
+      boundaryLeft(root.right);
     }
+  };
 
-    leaf = root => {
-        if(!root) return;
-        leaf(root.left);
+  leaf = (root) => {
+    if (!root) return;
 
-        if(!root.left && !root.right) {
-            res.push(root.val);
-        }
-
-        leaf(root.right);
-    }
-
-    boundaryRight = root => {
-        if(!root) return;
-
-        if(root.right) {
-            boundaryRight(root.right);
-            resRight.push(root.val);
-        } else if(root.left) {
-            boundaryRight(root.left);
-            resRight.push(root.val);
-        }
-    }
-
-    boundaryLeft(root.left);
     leaf(root.left);
-    leaf(root.right);
-    boundaryRight(root.right);
 
-    return [root.val, ...resLeft, ...res, ...resRight];
+    if (!root.left && !root.right) {
+      res.push(root.val);
+    }
+
+    leaf(root.right);
+  };
+
+  boundaryRight = (root) => {
+    if (!root) return;
+
+    if (root.right) {
+      boundaryRight(root.right);
+      resRight.push(root.val);
+    } else if (root.left) {
+      boundaryRight(root.left);
+      resRight.push(root.val);
+    }
+  };
+
+  boundaryLeft(root.left);
+  leaf(root.left);
+  leaf(root.right);
+  boundaryRight(root.right);
+
+  return [root.val, ...resLeft, ...res, ...resRight];
 };

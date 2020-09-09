@@ -36,30 +36,30 @@ Note:
 -30000 <= A[i] <= 30000
 1 <= A.length <= 30000
 */
-var maxSubarraySumCircular = A => {
-    let max_sum = 0;
-    let min_sum = 0;
-    let arr_sum = 0;
-    let localMax = 0;
-    let localMin = 0;
+var maxSubarraySumCircular = (A) => {
+  let max_sum = Number.NEGATIVE_INFINITY;
+  let min_sum = Number.POSITIVE_INFINITY;
+  let arr_sum = 0;
+  let localMax = 0;
+  let localMin = 0;
 
-    for(let i = 0; i < A.length; i++) {
-        arr_sum += A[i];
+  for (let i = 0; i < A.length; i++) {
+    arr_sum += A[i];
 
-        localMax += A[i];
-        // assign max_sum to higher value of existing max_sum or localMax
-        max_sum = max_sum > localMax ? max_sum : localMax;
-        // if localMax has -ve value then reset localMax to 0
-        localMax = localMax > 0 ? localMax : 0;
+    localMax += A[i];
+    // assign max_sum to higher value of existing max_sum or localMax
+    max_sum = max_sum > localMax ? max_sum : localMax;
+    // if localMax has -ve value then reset localMax to 0
+    localMax = localMax > 0 ? localMax : 0;
 
-        localMin += A[i];
-        // assign min_sum to smaller value of existing min_sum or localMin
-        min_sum = min_sum < localMin ? min_sum : localMin;
-        // if localMin has +ve value then reset localMin to 0
-        localMin = localMin < 0 ? localMin : 0;
-    }
+    localMin += A[i];
+    // assign min_sum to smaller value of existing min_sum or localMin
+    min_sum = min_sum < localMin ? min_sum : localMin;
+    // if localMin has +ve value then reset localMin to 0
+    localMin = localMin < 0 ? localMin : 0;
+  }
 
-    // return max_sum when total sum of an array is equal to min_sum
-    if(arr_sum === min_sum) return max_sum;
-    return Math.max(max_sum, (arr_sum - min_sum));
-}
+  // return max_sum when total sum of an array is equal to min_sum
+  if (arr_sum === min_sum) return max_sum;
+  return Math.max(max_sum, arr_sum - min_sum);
+};

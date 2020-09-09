@@ -17,26 +17,25 @@ First, iterate the array counting number of 0's, 1's, and 2's, then overwrite ar
 Could you come up with a one-pass algorithm using only constant space?
 */
 // Space complexity: O(n)
-let sortColors = nums => {
+let sortColors = (nums) => {
   let l = 0;
   let r = nums.length - 1;
   let index = 0;
 
-  while(index <= r) {
-
+  while (index <= r) {
     // arrange element from left as 0 should have higher preference
-    if(nums[index] === 0) {
+    if (nums[index] === 0) {
       [nums[index], nums[l]] = [nums[l], nums[index]];
       index++;
       l++;
-    } else if(nums[index] === 2) {
+    } else if (nums[index] === 2) {
       // arrange element from right as 2 should have the least preference
       [nums[index], nums[r]] = [nums[r], nums[index]];
-      right--;
+      r--;
     } else {
       index++;
     }
   }
 
   return nums;
-}
+};

@@ -9,7 +9,7 @@ Follow up:
 Could you do both operations in O(1) time complexity?
 
 Example:
-LRUCache cache = new LRUCache( 2 /* capacity */ );
+LRUCache cache = new LRUCache( 2 /* capacity */ //);
 
 // cache.put(1, 1);
 // cache.put(2, 2);
@@ -21,26 +21,26 @@ LRUCache cache = new LRUCache( 2 /* capacity */ );
 // cache.get(3);       // returns 3
 // cache.get(4);       // returns 4
 
-var LRUCache = function(capacity) {
-    this.hashMap = new Map();
-    this.capacity = capacity;
+var LRUCache = function (capacity) {
+  this.hashMap = new Map();
+  this.capacity = capacity;
 };
 
 /**
  * @param {number} key
  * @return {number}
  */
-LRUCache.prototype.get = function(key) {
-    if(!this.hashMap.has(key)) return -1;
+LRUCache.prototype.get = function (key) {
+  if (!this.hashMap.has(key)) return -1;
 
-    const value = this.hashMap.get(key);
+  const value = this.hashMap.get(key);
 
-    // deleting existing (key, value) pair as we want to set that as recently used
-    this.hashMap.delete(key);
+  // deleting existing (key, value) pair as we want to set that as recently used
+  this.hashMap.delete(key);
 
-    // set the (key, value) pair
-    this.hashMap.set(key, value);
-    return value;
+  // set the (key, value) pair
+  this.hashMap.set(key, value);
+  return value;
 };
 
 /**
@@ -48,17 +48,17 @@ LRUCache.prototype.get = function(key) {
  * @param {number} value
  * @return {void}
  */
-LRUCache.prototype.put = function(key, value) {
-    if(this.hashMap.has(key)) {
-        this.hashMap.delete(key);
-    }
+LRUCache.prototype.put = function (key, value) {
+  if (this.hashMap.has(key)) {
+    this.hashMap.delete(key);
+  }
 
-    // Ex: Map(3) {1 => 1, 2 => 2, 3 => 5}
-    this.hashMap.set(key, value);
+  // Ex: Map(3) {1 => 1, 2 => 2, 3 => 5}
+  this.hashMap.set(key, value);
 
-    // if hashMap size becomes more than capacity then need to delete least recently used
-    if(this.hashMap.size > this.capacity) {
-        const keys = this.hashMap.keys();  // MapIterator {1, 2, 3}
-        this.hashMap.delete(keys.next().value); // delete 1st element from iterator
-    }
+  // if hashMap size becomes more than capacity then need to delete least recently used
+  if (this.hashMap.size > this.capacity) {
+    const keys = this.hashMap.keys(); // MapIterator {1, 2, 3}
+    this.hashMap.delete(keys.next().value); // delete 1st element from iterator
+  }
 };

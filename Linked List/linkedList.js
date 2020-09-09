@@ -25,12 +25,12 @@ class LinkedList {
     let current;
 
     // if empty
-    if(this.head === null) {
-      this.head = head;
+    if (this.head === null) {
+      this.head = data;
     } else {
       current = this.head;
 
-      while(current.next) {
+      while (current.next) {
         current = current.next; // Goes till last existing node
       }
 
@@ -42,14 +42,14 @@ class LinkedList {
 
   // Insert at
   insertAt(data, index) {
-    if(index < 0 && index > this.size) return;
+    if (index < 0 && index > this.size) return;
 
-    if(index === 0) {
+    if (index === 0) {
       this.insertFirst(data);
       return;
     }
 
-    if(index  === this.size) {
+    if (index === this.size) {
       this.insertLast(data);
       return;
     }
@@ -58,7 +58,7 @@ class LinkedList {
     var node = new Node(data);
     var current = this.head;
     var previous;
-    while(count < index) {
+    while (count < index) {
       previous = current; // Node before index
       count++;
       current = current.next; // Node after index
@@ -74,8 +74,8 @@ class LinkedList {
     var current = this.head;
     var count = 0;
 
-    while(current) {
-      if(count === index) {
+    while (current) {
+      if (count === index) {
         console.log(current);
       }
       count++;
@@ -87,16 +87,17 @@ class LinkedList {
 
   // Remove at index
   removeAt(index) {
-    if(index < 0 || index > this.size) return;
+    if (index < 0 || index > this.size) return;
 
     var current, previous;
     var count = 0;
     current = this.head;
 
-    if(index === 0) { // first node
+    if (index === 0) {
+      // first node
       this.head = current.next;
     } else {
-      while(count < index) {
+      while (count < index) {
         count++;
         previous = current;
         current = current.next;
@@ -118,7 +119,7 @@ class LinkedList {
   printListData() {
     var current = this.head;
 
-    while(current) {
+    while (current) {
       console.log(current.data);
       current = current.next;
     }

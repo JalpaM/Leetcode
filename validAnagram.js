@@ -11,29 +11,27 @@ Input: s = "rat", t = "car"
 Output: false
 */
 
-const isAnagram = function(s, t) {
-    // return false if lengths are different
-    if(s.length !== t.length) return false;
+const isAnagram = function (s, t) {
+  // return false if lengths are different
+  if (s.length !== t.length) return false;
 
-    // create Map variable
-    let fre = {};
-    let strCountS = {};
+  let strCountS = {};
 
-    // store each character in stringCount
-    for(let char of s) {
-        // add 1 in count if already exist or set value to 1
-        strCountS[char] = strCountS[char] + 1 || 1
+  // store each character in stringCount
+  for (let char of s) {
+    // add 1 in count if already exist or set value to 1
+    strCountS[char] = strCountS[char] + 1 || 1;
+  }
+
+  for (let char of t) {
+    // check for each char in string count
+    if (!strCountS[char]) {
+      return false;
+    } else {
+      strCountS[char]--;
     }
+  }
 
-    for(let char of t) {
-        // check for each char in string count
-        if(!strCountS[char]) {
-            return false;
-        } else {
-            strCountS[char]--;
-        }
-    }
-
-    // return
-    return true;
+  // return
+  return true;
 };

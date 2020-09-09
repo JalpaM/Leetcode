@@ -31,32 +31,18 @@ The root-to-leaf path 4->0 represents the number 40.
 Therefore, sum = 495 + 491 + 40 = 1026.
 */
 var sumNumbers = function(root) {
-  // create collection to store end value
-  let result = [];
+    let res = 0;
 
-  // return asap with 0 if no input provided
-  if (!root) return 0;
+    if(root === null || root.length === 0) return 0;
 
-  // define traverse function
-  // which takes node and a value(initially empty string) as a parameters
-  function traverse(node, value = "") {
+    const go = (node, value = '') => {
+        if(node && (node.val || node.val === 0)) value += node.val;
+        if(node && !node.left && !node.right) res += Number(value);
+        if(node && node.left) go(node.left, value);
+        if(node && node.right) go(node.right, value);
+    }
 
-    // if there is node and a value - concatinate node val to a string
-    if (node && (node.val || node.val === 0)) value += node.val;
+    go(root);
 
-    // if there is node but no left and no right node
-    // means we encounter leaf - convert value string to a number
-    // and push it to result collection
-    if (node && !node.left && !node.right) result.push(Number(value));
-
-    // repeat same if there is a node with either left or right node
-    if (node && node.left) traverse(node.left, value);
-    if (node && node.right) traverse(node.right, value);
-  }
-
-  // initial invocation of traverse
-  traverse(root);
-
-  // return sum of all elements in collection
-  return result.reduce((acc, n) => acc + n, 0);
+    return res;
 };

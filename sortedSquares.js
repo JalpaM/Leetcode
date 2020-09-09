@@ -15,20 +15,20 @@ Note:
 -10000 <= A[i] <= 10000
 A is sorted in non-decreasing order.
 */
-var sortedSquares = function(A) {
-    let left = 0;
-    let right = A.length - 1;
-    let result = new Array(A.length);
+var sortedSquares = function (A) {
+  let left = 0;
+  let right = A.length - 1;
+  let result = new Array(A.length);
 
-    for(let i = A.length - 1; i >= 0; i--) {
-        if(Math.abs(A[left]) > A[right]) {
-            result[i] = A[left] * A[left];
-            left++;
-        } else {
-            result[i] = A[right] * A[right];
-            right--;
-        }
+  for (let i = A.length - 1; i >= 0; i--) {
+    if (Math.abs(A[left]) > A[right]) {
+      result[i] = A[left] * A[left];
+      left++;
+    } else {
+      result[i] = A[right] * A[right];
+      right--;
     }
+  }
 
-    return result;
+  return result;
 };
